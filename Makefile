@@ -6,7 +6,7 @@
 #    By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/02 18:22:04 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/02 18:24:00 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,6 @@ clean:
 		@rm -f $(OBJS)
 		@echo "${GREEN} ${WORD_SUCCESS}${NORMAL}"
 		
-
 fclean:	
 		@echo "${YELLOW} ${WORD_FCLEANING}${NORMAL}"
 		@make -C ./libft fclean

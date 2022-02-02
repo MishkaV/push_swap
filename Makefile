@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+         #
+#    By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/02 17:30:35 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/02 18:16:10 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ HEAD			=	includes/*.h \
 					libft/*.h
 INCLUDES		= 	-I./includes/ -I./libft/
 
-SRCS			=	srcs/*.c
+SRCS			=	srcs/main.c
 OBJS			=	$(SRCS:.c=.o)
 
-OBJS_LIB		=	${addprefix libft/, *.c}
+OBJS_LIB		=	${addprefix ./libft/, *.c}
 L_LIBFT			=  ./libft/libft.a
 
 

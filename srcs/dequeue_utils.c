@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dequeue_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:04:34 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/02 21:21:11 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 11:40:32 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ void    clean_dequeu(t_node *root)
     t_node *next;
 
     begin = root;
+
+    if (!root)
+        return ;
     
     while (root->next != begin)
     {

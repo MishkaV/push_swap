@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/02 21:24:01 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 11:18:58 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void    print_error(char *str);
 
 void    print_dequeu(t_node *root);
 void    clean_dequeu(t_node *root);
+
+
+#include "core_operations.h"
+#include "operations.h"
+
 
 t_node  *get_new_node(int num);
 t_node  *push_front(t_node *root, t_node *new_node);

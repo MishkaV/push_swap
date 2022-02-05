@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dequeue.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:55:25 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/02 21:23:55 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 11:37:58 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_node  *get_new_node(int num)
 
 t_node  *push_front(t_node *root, t_node *new_node)
 {
+    if (!root)
+        return (new_node);
     new_node->prev = root->prev;
     new_node->next = root;
     root->prev->next  = new_node;
@@ -39,6 +41,8 @@ t_node  *push_front(t_node *root, t_node *new_node)
 
 t_node  *push_back(t_node *root, t_node *new_node)
 {
+    if (!root)
+        return (new_node);
     new_node->prev = root->prev;
     new_node->next = root;
     root->prev->next = new_node;

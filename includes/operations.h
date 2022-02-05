@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dequeue.c                                       :+:      :+:    :+:   */
+/*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 18:52:17 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/03 18:59:20 by jbenjy           ###   ########.fr       */
+/*   Created: 2022/02/05 11:18:19 by jbenjy            #+#    #+#             */
+/*   Updated: 2022/02/05 11:39:47 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef OPERATIONS_H
+# define OPERATIONS_H
 
-t_node* ft_sa(t_node *root_a)
-{
-    t_node* next;
-    
-    next = root_a->next;
-    
-    next->prev = root_a->prev;
-    root_a->next = next->next;
-    next->next = root_a;
-    
-}
+t_node* sa(t_node *root);
+t_node* sb(t_node *root);
+t_node* pa(t_node *root_a, t_node **root_b);
+t_node* pb(t_node *root_b, t_node **root_a);
+
+#endif

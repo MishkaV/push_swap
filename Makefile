@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+         #
+#    By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/02 21:26:25 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/05 11:19:43 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ INCLUDES		= 	-I./includes/ -I./libft/
 SRCS			=	srcs/main.c \
 					srcs/utils.c \
 					srcs/dequeue_utils.c \
-					srcs/dequeue.c
+					srcs/dequeue.c \
+					srcs/core_operations.c \
+					srcs/operations.c 
+					
 OBJS			=	$(SRCS:.c=.o)
 
 OBJS_LIB		=	${addprefix ./libft/, *.c}

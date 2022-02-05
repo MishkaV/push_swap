@@ -6,7 +6,7 @@
 #    By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/05 11:51:14 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/05 13:09:47 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS			=	srcs/main.c \
 					srcs/core_operations.c \
 					srcs/operations.c \
 					srcs/operations3.c \
-					srcs/operations2.c
+					srcs/operations2.c \
+					srcs/checks.c \
 					
 OBJS			=	$(SRCS:.c=.o)
 

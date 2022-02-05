@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:08:41 by jbenjy            #+#    #+#             */
-/*   Updated: 2021/09/25 19:29:40 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 20:51:36 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_list
 {

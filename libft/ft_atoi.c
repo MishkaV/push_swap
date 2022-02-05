@@ -6,9 +6,29 @@
 /*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 15:13:42 by jbenjy            #+#    #+#             */
-/*   Updated: 2021/09/17 10:37:22 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 21:19:57 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+static void    print_error()
+{
+    ft_putstr_fd("Error", 0);
+    ft_putstr_fd("\n", 0);
+    exit(1);
+}
+
+static void	check_maxs(long num)
+{
+	long int_max;
+	long int_min;
+
+	int_max = 2147483647;
+	int_min = -2147483648;
+	if (num > int_max || num < int_min)
+		print_error();
+}
 
 static int	check(char c)
 {
@@ -26,10 +46,10 @@ static int	check(char c)
 		return (0);
 	return (1);
 }
-
+#include "stdio.h"
 int	ft_atoi(const char *str)
 {
-	unsigned long	num;
+	long	num;
 	int				sign;
 
 	num = 0;
@@ -45,11 +65,6 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str != '\0' && *str >= '0' && *str <= '9')
 		num = num * 10 + *str++ - '0';
-	if (num > 9223372036854775807)
-	{
-		if (sign == -1)
-			return (0);
-		return (-1);
-	}
+	check_maxs(num * sign);
 	return (num * sign);
 }

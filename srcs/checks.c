@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:09:20 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 13:48:50 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 20:26:22 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_spaces(char *str)
 {
 	while(*str)
 	{
-		if (!(*str == '\n' || *str == '\t' || *str == ' ' || *str == '\r' || *str == '\v'))
+		if (*str != '\n' && *str != '\t' && *str != ' ' && *str != '\r' && *str != '\v')
 			return (1);
 		str++;
 	}
@@ -61,6 +61,6 @@ void	is_valid_argv(int argc, char **argv)
 
 	i = 0;
 	while (++i < argc)
-		if(!is_spaces(argv[i]))
+		if(is_spaces(argv[i]))
 			is_valid_str(argv[i]);
 }

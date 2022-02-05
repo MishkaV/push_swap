@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 13:48:15 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 20:33:38 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ t_node  *push_front(t_node *root, t_node *new_node);
 t_node  *push_back(t_node *root, t_node *new_node);
 
 void	is_valid_argv(int argc, char **argv);
+void    parser(t_all* all, int argc, char** argv);
 
 #endif

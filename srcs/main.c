@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 17:25:01 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 20:59:57 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/05 21:39:49 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ int main(int argc, char **argv)
         exit(1);
     is_valid_argv(argc, argv);
     parser(&all, argc, argv);
-    return 0;
+    return (0);
 }

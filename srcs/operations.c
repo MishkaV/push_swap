@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 18:52:17 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 11:50:39 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:40:01 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_node* sa(t_node *root)
 	if (!root)
 		return (0);
 	root = swap(root);
-	write(STANDART_OUTPUT, "sa\n", 3);
+	ft_putstr_fd("sa\n", STANDART_OUTPUT);
 	return (root);
 }
 
@@ -26,7 +26,7 @@ t_node* sb(t_node *root)
 	if (!root)
 		return (0);
 	root = swap(root);
-	write(STANDART_OUTPUT, "sb\n", 3);
+	ft_putstr_fd("sb\n", STANDART_OUTPUT);
 	return (root);
 }
 
@@ -42,8 +42,7 @@ t_node* pa(t_node *root_a, t_node **root_b)
 	node_b->prev->next = *root_b;
 	
 	root_a = push_front(root_a, node_b);
-	
-	write(STANDART_OUTPUT, "pa\n", 3);
+	ft_putstr_fd("pa\n", STANDART_OUTPUT);
 	return (root_a);
 }
 
@@ -59,7 +58,6 @@ t_node* pb(t_node *root_b, t_node **root_a)
 	node_a->prev->next = *root_a;
 	
 	root_b = push_front(root_b, node_a);
-	
-	write(STANDART_OUTPUT, "pb\n", 3);
+	ft_putstr_fd("pb\n", STANDART_OUTPUT);
 	return (root_b);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dequeue_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:04:34 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 12:39:34 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:11:46 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    print_dequeu(t_node *root)
+void    print_dequeue(t_node *root)
 {
 	t_node *begin;
 
@@ -46,10 +46,36 @@ void    clean_dequeu(t_node *root)
 		root = next;
 	}
 	free(root);
-	ft_putstr_fd("\nCleaning dequeue is complete\n", STANDART_OUTPUT); 
 }
 
 int is_sorted_ascending(t_node* root)
 {
-	
+    t_node *begin;
+
+    begin = root;
+	while (root->next != begin)
+    {
+        if (root->num > root->next->num)
+            return (0);
+        root = root->next;
+    }
+    return (1);
+}
+
+int	find_max(t_node* root)
+{
+	int		max;
+	t_node*	begin;
+
+	max = root->num;
+	begin = root;
+	while (root->next != begin)
+	{
+		if (root->num > max)
+			max = root->num;
+		root = root->next;
+	}
+	if (root->num > max)
+		max = root->num;
+	return max;
 }

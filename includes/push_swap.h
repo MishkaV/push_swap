@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 20:33:38 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:11:52 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ typedef struct	s_all
 void    print_error(char *str);
 void	init_all(t_all* all);
 
-void    print_dequeu(t_node *root);
+void    print_dequeue(t_node *root);
 void    clean_dequeu(t_node *root);
+int 	is_sorted_ascending(t_node* root);
+int		find_max(t_node* root);
 
 #include "core_operations.h"
 #include "operations.h"
@@ -53,5 +55,7 @@ t_node  *push_back(t_node *root, t_node *new_node);
 
 void	is_valid_argv(int argc, char **argv);
 void    parser(t_all* all, int argc, char** argv);
+
+void    sort_dequeu(t_all *all);
 
 #endif

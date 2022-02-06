@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 17:25:01 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 21:39:49 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:28:48 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,12 @@ int main(int argc, char **argv)
         exit(1);
     is_valid_argv(argc, argv);
     parser(&all, argc, argv);
+    // print_dequeue(all.root_a);
+    // printf("|%d %d|\n", all.len_a, is_sorted_ascending(all.root_a));
+    if (!is_sorted_ascending(all.root_a))
+        sort_dequeu(&all);
+    // print_dequeue(all.root_a);
+    clean_dequeu(all.root_a);
+    clean_dequeu(all.root_b);
     return (0);
 }

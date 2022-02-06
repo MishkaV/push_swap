@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:55:25 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 13:01:06 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 18:33:07 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node  *get_new_node(int num)
     
     node = malloc(sizeof(t_node));
     if (!node)
-        print_error("Error to allocate new node");
+        return (0);
     node->next = node;
     node->prev = node;
     node->num = num;

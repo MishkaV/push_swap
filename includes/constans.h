@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   constans.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:11:45 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/02 20:13:20 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:44:01 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANS_H
 # define CONSTANS_H
-# define STANDART_OUTPUT 0
+# define STANDART_OUTPUT 1
 # define EXIT_ERROR 1
 
 

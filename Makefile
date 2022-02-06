@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+         #
+#    By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/05 20:29:43 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/06 19:15:35 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS			=	srcs/main.c \
 					srcs/operations3.c \
 					srcs/operations2.c \
 					srcs/checks.c \
+					srcs/sort.c \
 					srcs/parser.c 
 					
 OBJS			=	$(SRCS:.c=.o)

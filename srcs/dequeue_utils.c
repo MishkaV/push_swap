@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:04:34 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 19:11:46 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 20:19:41 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,25 @@ int	find_max(t_node* root)
 	}
 	if (root->num > max)
 		max = root->num;
-	return max;
+	return (max);
+}
+
+int	find_min(t_node* root)
+{
+	int		min;
+	t_node*	begin;
+
+	if (!root)
+		return (-1);
+	min = root->num;
+	begin = root;
+	while (root->next != begin)
+	{
+		if (root->num < min)
+			min = root->num;
+		root = root->next;
+	}
+	if (root->num < min)
+		min = root->num;
+	return (min);
 }

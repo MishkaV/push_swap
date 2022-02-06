@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 19:11:52 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:57:29 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void    print_dequeue(t_node *root);
 void    clean_dequeu(t_node *root);
 int 	is_sorted_ascending(t_node* root);
 int		find_max(t_node* root);
+int		find_min(t_node* root);
 
 #include "core_operations.h"
 #include "operations.h"

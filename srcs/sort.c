@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 18:46:37 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 19:41:56 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 20:51:15 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,28 @@ static void    sort_by_three(t_all *all)
 
 static void    sort_by_five(t_all *all)
 {
-    (void)all;
+    int max;
+    int min;
+
+    max = find_max(all->root_a);
+    min = find_min(all->root_a);
+    while (all->len_b != 2)
+    {   
+        if (all->root_a->num != min && all->root_a->num != max)
+            all->root_a = rra(all->root_a);
+        else
+        {
+            all->root_b = pb(all->root_b, &all->root_a);
+            all->len_a--;
+            all->len_b++;
+        }
+    }
+    sort_by_three(all);
+    while(all->len_b--)
+        all->root_a = pa(all->root_a, &all->root_b);
+    if (all->root_a->num == min)
+        all->root_a = sa(all->root_a);
+    all->root_a = ra(all->root_a);
 }
 
 void    sort_dequeu(t_all *all)

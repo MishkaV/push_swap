@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 18:46:37 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 20:51:15 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 21:04:27 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void    sort_dequeu(t_all *all)
         sort_by_three(all);
     else if (all->len_a < 6)
         sort_by_five(all);
-    // else
-    //     sort_extension(all);
+    else
+        sort_extension(all);
 }

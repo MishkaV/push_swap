@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:16:39 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 11:46:01 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 22:27:49 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ t_node* swap(t_node *root)
     next = root->next;
     prev = root->prev;
     
-    root->next = next->next;
-    root->prev = next;
-    next->next->prev = root;
-    
-    next->next = root;
-    next->prev = prev;
-
     prev->next = next;
+    next->prev = prev;
+    
+    root->next = next->next;
+    next->next = root;
+    root->prev = next;
+    
+    root->next->prev = root;
     
     return (next);
 }

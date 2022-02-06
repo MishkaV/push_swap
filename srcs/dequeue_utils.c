@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:04:34 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 20:19:41 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/06 22:22:34 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void    print_dequeue(t_node *root)
 {
 	t_node *begin;
-
+	
+	if (!root)
+		return ;
 	begin = root;
 	ft_putstr_fd("\n--------------------------------------\n", STANDART_OUTPUT);
 	ft_putstr_fd("Dequeu:\n", STANDART_OUTPUT);

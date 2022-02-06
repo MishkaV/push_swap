@@ -6,7 +6,7 @@
 #    By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/06 19:15:35 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/06 22:03:08 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ INCLUDES		= 	-I./includes/ -I./libft/
 SRCS			=	srcs/main.c \
 					srcs/utils.c \
 					srcs/dequeue_utils.c \
+					srcs/dequeue_utils2.c \
 					srcs/dequeue.c \
 					srcs/core_operations.c \
 					srcs/operations.c \
@@ -29,6 +30,7 @@ SRCS			=	srcs/main.c \
 					srcs/operations2.c \
 					srcs/checks.c \
 					srcs/sort.c \
+					srcs/sort2.c \
 					srcs/parser.c 
 					
 OBJS			=	$(SRCS:.c=.o)

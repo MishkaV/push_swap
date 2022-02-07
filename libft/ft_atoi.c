@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 15:13:42 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 21:19:57 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:51:02 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void    print_error()
+static void	print_error(void)
 {
-    ft_putstr_fd("Error", 0);
-    ft_putstr_fd("\n", 0);
-    exit(1);
+	ft_putstr_fd("Error", 0);
+	ft_putstr_fd("\n", 0);
+	exit(1);
 }
 
 static void	check_maxs(long num)
 {
-	long int_max;
-	long int_min;
+	long	int_max;
+	long	int_min;
 
 	int_max = 2147483647;
 	int_min = -2147483648;
@@ -46,11 +46,11 @@ static int	check(char c)
 		return (0);
 	return (1);
 }
-#include "stdio.h"
+
 int	ft_atoi(const char *str)
 {
 	long	num;
-	int				sign;
+	int		sign;
 
 	num = 0;
 	sign = 1;

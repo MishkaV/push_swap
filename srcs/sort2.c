@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:03:57 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 20:38:02 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:02:32 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void init_instr(t_steps* step)
 	step->dest_b = 0;
 }
 
-static void	ft_steps_markup(t_node *root_b, int len)
+static void	tick_nodes(t_node *root_b, int len)
 {
 	int		i;
 	
@@ -42,7 +42,7 @@ static void	ft_steps_markup(t_node *root_b, int len)
 	}
 }
 
-static void	ft_instruction_execution(t_all* all, t_steps *steps)
+static void	make_instr(t_all* all, t_steps *steps)
 {
 	while (steps->count_b)
 	{
@@ -72,12 +72,12 @@ static void	sort_extension_more(t_all* all)
 	while (all->len_b)
 	{
 		init_instr(&step);
-		ft_steps_markup(all->root_a, all->len_a);
-		ft_steps_markup(all->root_b, all->len_b);
-		ft_minimum_insertion_steps(all, &step);
-		ft_instruction_execution(all, &step);
+		tick_nodes(all->root_a, all->len_a);
+		tick_nodes(all->root_b, all->len_b);
+		find_instr(all, &step);
+		make_instr(all, &step);
 	}
-	if ((all->len_a / 2 < ft_count_to_min(all->root_a, all->param.min, all->len_a)))
+	if ((all->len_a / 2 < search_by_index(all->root_a, all->param.min, all->len_a)))
 		while (all->root_a->num != all->param.min)
 			all->root_a = rra(all->root_a);
 	else

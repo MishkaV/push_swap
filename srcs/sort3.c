@@ -6,13 +6,13 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:44:53 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 20:55:20 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:01:00 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int  ft_smaller_element_detection(t_node *root, int to_save, int num, int len)
+static int  search_min_num(t_node *root, int to_save, int num, int len)
 {
 	t_node* curr;
 	int     i;
@@ -29,7 +29,7 @@ static int  ft_smaller_element_detection(t_node *root, int to_save, int num, int
     return (0);
 }
 
-static void	ft_help_finding_place(t_all* all, t_node* root_b, int *to_do, int *to_save)
+static void	search_pos_more(t_all* all, int *to_do, int *to_save, t_node* root_b)
 {
     int i;
 
@@ -46,7 +46,7 @@ static void	ft_help_finding_place(t_all* all, t_node* root_b, int *to_do, int *t
         i++;
 	
 	}
-	if (ft_smaller_element_detection(all->root_a, *to_save, root_b->num, all->len_a))
+	if (search_min_num(all->root_a, *to_save, root_b->num, all->len_a))
 		while (i < all->len_a)
 		{
 			if (all->root_a->num > root_b->num && *to_save > all->root_a->num)
@@ -58,14 +58,14 @@ static void	ft_help_finding_place(t_all* all, t_node* root_b, int *to_do, int *t
 }
 
 
-static int  ft_finding_place(t_all* all, t_node* root_b, t_steps *steps, int num)
+static int  search_pos(t_all* all, t_node* root_b, int num, t_steps *steps)
 {
 	int to_do;
 	int to_save;
 
 	to_do = 0;
 	to_save = 0;
-	ft_help_finding_place(all, root_b, &to_do, &to_save);
+	search_pos_more(all, &to_do, &to_save, root_b);
 	if (all->root_a->rotate == -1)
 		to_do = all->len_a - to_do;
 	if (num <= to_do + root_b->step && num != -1)
@@ -80,7 +80,7 @@ static int  ft_finding_place(t_all* all, t_node* root_b, t_steps *steps, int num
 	}
 }
 
-void	ft_minimum_insertion_steps(t_all* all, t_steps *steps)
+void	find_instr(t_all* all, t_steps *steps)
 {
     int		less_tick;
 	t_node* first_a;
@@ -95,7 +95,7 @@ void	ft_minimum_insertion_steps(t_all* all, t_steps *steps)
 	first_b = all->root_b;
 	while (i < len_b)
 	{
-		less_tick = ft_finding_place(all, all->root_b, steps, less_tick);
+		less_tick = search_pos(all, all->root_b, less_tick, steps);
 		all->root_b = all->root_b->next;
 		all->root_a = first_a;
         i++;
@@ -103,7 +103,7 @@ void	ft_minimum_insertion_steps(t_all* all, t_steps *steps)
 	all->root_b = first_b;
 }
 
-int		ft_count_to_min(t_node *root, int num, int len)
+int		search_by_index(t_node *root, int num, int len)
 {
 	int i;
 

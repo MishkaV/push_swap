@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 18:57:17 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:01:10 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void 	inc_pa(t_all *all);
 void 	inc_pb(t_all *all);
 
 
-void	ft_minimum_insertion_steps(t_all* all, t_steps *steps);
-int		ft_count_to_min(t_node *a, int min, int len_a);
+void	find_instr(t_all* all, t_steps *steps);
+int		search_by_index(t_node *a, int min, int len_a);
 #endif

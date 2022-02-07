@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:44:53 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 21:01:00 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:20:12 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	search_pos_more(t_all* all, int *to_do, int *to_save, t_node* root_b
 }
 
 
-static int  search_pos(t_all* all, t_node* root_b, int num, t_steps *steps)
+static int  search_pos(t_all* all, t_node* root_b, int num, t_instr *instr)
 {
 	int to_do;
 	int to_save;
@@ -66,21 +66,21 @@ static int  search_pos(t_all* all, t_node* root_b, int num, t_steps *steps)
 	to_do = 0;
 	to_save = 0;
 	search_pos_more(all, &to_do, &to_save, root_b);
-	if (all->root_a->rotate == -1)
+	if (all->root_a->tick == -1)
 		to_do = all->len_a - to_do;
-	if (num <= to_do + root_b->step && num != -1)
+	if (num <= to_do + root_b->ind && num != -1)
 		return (num);
     else
 	{
-		steps->dest_a = all->root_a->rotate;
-		steps->count_a = to_do;
-		steps->dest_b = root_b->rotate;
-		steps->count_b = root_b->step;
-		return (to_do + root_b->step);
+		instr->instr_a = all->root_a->tick;
+		instr->len_a = to_do;
+		instr->instr_b = root_b->tick;
+		instr->len_b = root_b->ind;
+		return (to_do + root_b->ind);
 	}
 }
 
-void	find_instr(t_all* all, t_steps *steps)
+void	find_instr(t_all* all, t_instr *instr)
 {
     int		less_tick;
 	t_node* first_a;
@@ -95,7 +95,7 @@ void	find_instr(t_all* all, t_steps *steps)
 	first_b = all->root_b;
 	while (i < len_b)
 	{
-		less_tick = search_pos(all, all->root_b, less_tick, steps);
+		less_tick = search_pos(all, all->root_b, less_tick, instr);
 		all->root_b = all->root_b->next;
 		all->root_a = first_a;
         i++;

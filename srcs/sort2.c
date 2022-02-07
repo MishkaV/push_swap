@@ -6,18 +6,18 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:03:57 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 21:02:32 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:19:58 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void init_instr(t_steps* step)
+static void init_instr(t_instr* instr)
 {
-	step->count_a = -1;
-	step->dest_a = 0;
-	step->count_b = -1;
-	step->dest_b = 0;
+	instr->len_a = -1;
+	instr->instr_a = 0;
+	instr->len_b = -1;
+	instr->instr_b = 0;
 }
 
 static void	tick_nodes(t_node *root_b, int len)
@@ -27,8 +27,8 @@ static void	tick_nodes(t_node *root_b, int len)
 	i = 0;
 	while (i <= len / 2)
 	{
-		root_b->rotate = 1;
-		root_b->step = i;
+		root_b->tick = 1;
+		root_b->ind = i;
 		root_b = root_b->next;
 		i++;
 	}
@@ -36,29 +36,29 @@ static void	tick_nodes(t_node *root_b, int len)
 		i--;
 	while (--i)
 	{
-		root_b->rotate = -1;
-		root_b->step = i;
+		root_b->tick = -1;
+		root_b->ind = i;
 		root_b = root_b->next;
 	}
 }
 
-static void	make_instr(t_all* all, t_steps *steps)
+static void	make_instr(t_all* all, t_instr *instr)
 {
-	while (steps->count_b)
+	while (instr->len_b)
 	{
-		if (steps->dest_b != 1)
+		if (instr->instr_b != 1)
 			all->root_b = rrb(all->root_b);
 		else
 			all->root_b = rb(all->root_b);
-		steps->count_b--;
+		instr->len_b--;
 	}
-	while (steps->count_a)
+	while (instr->len_a)
 	{
-		if (steps->dest_a != 1)
+		if (instr->instr_a != 1)
 			all->root_a = rra(all->root_a);
 		else
 			all->root_a = ra(all->root_a);
-		steps->count_a--;
+		instr->len_a--;
 	}
 	all->root_a = pa(all->root_a, &all->root_b);
 	inc_pa(all);
@@ -66,16 +66,16 @@ static void	make_instr(t_all* all, t_steps *steps)
 
 static void	sort_extension_more(t_all* all)
 {
-	t_steps step;
+	t_instr instr;
 	all->root_a = pa(all->root_a, &all->root_b);
 	inc_pa(all);
 	while (all->len_b)
 	{
-		init_instr(&step);
+		init_instr(&instr);
 		tick_nodes(all->root_a, all->len_a);
 		tick_nodes(all->root_b, all->len_b);
-		find_instr(all, &step);
-		make_instr(all, &step);
+		find_instr(all, &instr);
+		make_instr(all, &instr);
 	}
 	if ((all->len_a / 2 < search_by_index(all->root_a, all->param.min, all->len_a)))
 		while (all->root_a->num != all->param.min)

@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 21:01:10 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:19:49 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 typedef struct      s_node
 {
 	int             num;
-	int             step;
-	int             rotate;
+	int             ind;
+	int             tick;
 	struct s_node   *next;
 	struct s_node   *prev;
 }                   t_node;
@@ -46,13 +46,13 @@ typedef struct	s_all
 	int			len_b;
 }				t_all;
 
-typedef struct		s_steps
+typedef struct		s_instr
 {
-	int				count_a;
-	int				count_b;
-	int				dest_a;
-	int				dest_b;
-}					t_steps;
+	int				len_a;
+	int				len_b;
+	int				instr_a;
+	int				instr_b;
+}					t_instr;
 
 void    print_error(char *str);
 void	init_all(t_all* all);
@@ -81,6 +81,6 @@ void 	inc_pa(t_all *all);
 void 	inc_pb(t_all *all);
 
 
-void	find_instr(t_all* all, t_steps *steps);
-int		search_by_index(t_node *a, int min, int len_a);
+void	find_instr(t_all* all, t_instr *instr);
+int		search_by_index(t_node *root, int num, int len);
 #endif

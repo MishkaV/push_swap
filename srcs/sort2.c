@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:03:57 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 18:57:27 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 20:38:02 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,50 @@
 static void init_instr(t_steps* step)
 {
 	step->count_a = -1;
-	step->count_b = -1;
 	step->dest_a = 0;
+	step->count_b = -1;
 	step->dest_b = 0;
 }
 
-static void	ft_steps_markup(t_node *b, int count)
+static void	ft_steps_markup(t_node *root_b, int len)
 {
 	int		i;
-	int		iter;
-	t_node	*buff;
-
-	i = -1;
-	iter = count / 2;
-	buff = b;
-	while (++i <= iter)
+	
+	i = 0;
+	while (i <= len / 2)
 	{
-		buff->step = i;
-		buff->rotate = 1;
-		buff = buff->next;
+		root_b->rotate = 1;
+		root_b->step = i;
+		root_b = root_b->next;
+		i++;
 	}
-	if (count % 2 == 0)
+	if (!(len % 2))
 		i--;
-	while (--i > 0)
+	while (--i)
 	{
-		buff->step = i;
-		buff->rotate = -1;
-		buff = buff->next;
+		root_b->rotate = -1;
+		root_b->step = i;
+		root_b = root_b->next;
 	}
 }
 
 static void	ft_instruction_execution(t_all* all, t_steps *steps)
 {
-	while (steps->count_a > 0)
+	while (steps->count_b)
 	{
-		if (steps->dest_a == 1)
-			all->root_a = ra(all->root_a);
-		else
-			all->root_a = rra(all->root_a);
-		steps->count_a--;
-	}
-	while (steps->count_b > 0)
-	{
-		if (steps->dest_b == 1)
-			all->root_b = rb(all->root_b);
-		else
+		if (steps->dest_b != 1)
 			all->root_b = rrb(all->root_b);
+		else
+			all->root_b = rb(all->root_b);
 		steps->count_b--;
+	}
+	while (steps->count_a)
+	{
+		if (steps->dest_a != 1)
+			all->root_a = rra(all->root_a);
+		else
+			all->root_a = ra(all->root_a);
+		steps->count_a--;
 	}
 	all->root_a = pa(all->root_a, &all->root_b);
 	inc_pa(all);
@@ -70,7 +67,6 @@ static void	ft_instruction_execution(t_all* all, t_steps *steps)
 static void	sort_extension_more(t_all* all)
 {
 	t_steps step;
-
 	all->root_a = pa(all->root_a, &all->root_b);
 	inc_pa(all);
 	while (all->len_b)
@@ -81,11 +77,9 @@ static void	sort_extension_more(t_all* all)
 		ft_minimum_insertion_steps(all, &step);
 		ft_instruction_execution(all, &step);
 	}
-	if ((ft_count_to_min(all->root_a, all->param.min, all->len_a)) > all->len_a / 2)
-	{
+	if ((all->len_a / 2 < ft_count_to_min(all->root_a, all->param.min, all->len_a)))
 		while (all->root_a->num != all->param.min)
 			all->root_a = rra(all->root_a);
-	}
 	else
 		while (all->root_a->num != all->param.min)
 			all->root_a = ra(all->root_a);
@@ -97,18 +91,15 @@ void    sort_extension(t_all* all)
 	all->param.min = find_min(all->root_a);
 	all->param.med = find_med(all->root_a, all->len_a);
 	while (all->len_a != 2)
-	{
-		if (all->root_a->num == all->param.min || all->root_a->num == all->param.max)
-			all->root_a = ra(all->root_a);
-		else
+		if (all->root_a->num != all->param.min && all->root_a->num != all->param.max)
 		{
 			all->root_b = pb(all->root_b, &all->root_a);
-			all->len_a--;
-			all->len_b++;
+			inc_pb(all);
 			if (all->param.med < all->root_b->num)
 				all->root_b = rb(all->root_b);
 		}
-	}
+		else
+			all->root_a = ra(all->root_a);
 	if (all->root_a->next->num > all->root_a->num)
 		all->root_a = sa(all->root_a);
 	sort_extension_more(all);

@@ -6,121 +6,113 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 18:44:53 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 18:58:31 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 20:55:20 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int  ft_smaller_element_detection(t_node *a, int buff, int src, int len_a)
+static int  ft_smaller_element_detection(t_node *root, int to_save, int num, int len)
 {
-	t_node* save;
-	int		ret;
-    int     i;
+	t_node* curr;
+	int     i;
 
-	save = a;
-	ret = 0;
     i = 0;
-	while (i < len_a && ret == 0)
+	curr = root;
+	while (i < len)
 	{
-		if (save->num < buff && save->num > src)
-			ret = 1;
-		save = save->next;
+		if (num < curr->num && curr->num < to_save)
+			return (1);
+		curr = curr->next;
         i++;
 	}
-	return (ret);
+    return (0);
 }
 
-static void	ft_help_finding_place(t_all* all, t_node* b, int *action, int *buff)
+static void	ft_help_finding_place(t_all* all, t_node* root_b, int *to_do, int *to_save)
 {
     int i;
 
     i = 0;
 	while (i < all->len_a)
 	{
-		*buff = all->root_a->num;
-		if (b->num > all->root_a->num)
-		{
-			*action += 1;
-			if (b->num < all->root_a->next->num)
-				break ;
-			all->root_a = all->root_a->next;
-            i++;
-		}
-		else
+		*to_save = all->root_a->num;
+		if (root_b->num <= all->root_a->num)
+            break ;
+		(*to_do)++;
+		if (root_b->num < all->root_a->next->num)
 			break ;
+		all->root_a = all->root_a->next;
+        i++;
+	
 	}
-	if (ft_smaller_element_detection(all->root_a, *buff, b->num, all->len_a) == 1)
-	{
+	if (ft_smaller_element_detection(all->root_a, *to_save, root_b->num, all->len_a))
 		while (i < all->len_a)
 		{
-			if (all->root_a->num < *buff && all->root_a->num > b->num)
+			if (all->root_a->num > root_b->num && *to_save > all->root_a->num)
 				break ;
-			*action += 1;
 			all->root_a = all->root_a->next;
+			(*to_do)++;
             i++;
 		}
-	}
 }
 
 
-static int  ft_finding_place(t_all* all, t_node* b, t_steps *steps, int min)
+static int  ft_finding_place(t_all* all, t_node* root_b, t_steps *steps, int num)
 {
-	int action;
-	int res;
-	int buff;
+	int to_do;
+	int to_save;
 
-	action = 0;
-	buff = 0;
-	ft_help_finding_place(all, b, &action, &buff);
+	to_do = 0;
+	to_save = 0;
+	ft_help_finding_place(all, root_b, &to_do, &to_save);
 	if (all->root_a->rotate == -1)
-		action = all->len_a - action;
-	if (min == -1 || (action + b->step) < min)
+		to_do = all->len_a - to_do;
+	if (num <= to_do + root_b->step && num != -1)
+		return (num);
+    else
 	{
 		steps->dest_a = all->root_a->rotate;
-		steps->dest_b = b->rotate;
-		steps->count_a = action;
-		steps->count_b = b->step;
-		res = action + b->step;
+		steps->count_a = to_do;
+		steps->dest_b = root_b->rotate;
+		steps->count_b = root_b->step;
+		return (to_do + root_b->step);
 	}
-	else
-		res = min;
-	return (res);
 }
 
 void	ft_minimum_insertion_steps(t_all* all, t_steps *steps)
 {
-    int		min_action;
+    int		less_tick;
 	t_node* first_a;
 	t_node* first_b;
     int     i;
     int     len_b;
 
-	min_action = -1;
-    i = 0;
+	i = 0;
+    less_tick = -1;
     len_b = all->len_b;
 	first_a = all->root_a;
 	first_b = all->root_b;
 	while (i < len_b)
 	{
-		min_action = ft_finding_place(all, all->root_b, steps, min_action);
-		all->root_a = first_a;
+		less_tick = ft_finding_place(all, all->root_b, steps, less_tick);
 		all->root_b = all->root_b->next;
+		all->root_a = first_a;
         i++;
 	}
 	all->root_b = first_b;
 }
 
-int		ft_count_to_min(t_node *a, int min, int len_a)
+int		ft_count_to_min(t_node *root, int num, int len)
 {
 	int i;
 
 	i = 0;
-	while (i < len_a)
+	while (i < len)
 	{
-		if (a->num == min)
-			break ;
-		a = a->next;
+		if (root->num == num)
+			return (i);
+		root = root->next;
 		i++;
 	}
 	return (i);

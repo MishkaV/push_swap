@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbenjy <jbenjy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 13:09:20 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/05 20:26:22 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 21:56:18 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,39 @@
 
 static int	is_spaces(char *str)
 {
-	while(*str)
+	while (*str)
 	{
-		if (*str != '\n' && *str != '\t' && *str != ' ' && *str != '\r' && *str != '\v')
+		if (*str != '\n' && *str != '\t' && *str != ' '
+			&& *str != '\r' && *str != '\v')
 			return (1);
 		str++;
 	}
 	return (0);
 }
 
-static void is_valid_str(char *str)
+static	void	is_valid_str_more(char *str, int *have_number,
+									int *have_sign, int i)
+{
+	if (ft_isdigit(str[i]))
+		*have_number = 1;
+	else if (str[i] == '\t' || str[i] == ' ')
+	{
+		if (*have_sign && !(*have_number))
+			print_error("Error");
+		*have_number = 0;
+		*have_sign = 0;
+	}
+	else if (str[i] == '-' || str[i] == '+')
+	{
+		if (*have_sign || *have_number || !str[i + 1])
+			print_error("Error");
+		*have_sign = 1;
+	}
+	else
+		print_error("Error");
+}	
+
+static	void	is_valid_str(char *str)
 {
 	int	i;
 	int	have_number;
@@ -34,33 +57,17 @@ static void is_valid_str(char *str)
 	have_sign = 0;
 	while (i < (int)ft_strlen(str))
 	{
-		if (ft_isdigit(str[i]))
-			have_number = 1;
-		else if (str[i] == '\t' || str[i] == ' ')
-		{
-			if (have_sign && !have_number)
-				print_error("Error");
-			have_number = 0;
-			have_sign = 0;
-		}
-		else if (str[i] == '-' || str[i] == '+')
-		{
-			if (have_sign || have_number || !str[i + 1])
-				print_error("Error");
-			have_sign = 1;
-		}
-		else
-			print_error("Error");
+		is_valid_str_more(str, &have_number, &have_sign, i);
 		i++;
 	}
 }
 
 void	is_valid_argv(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (++i < argc)
-		if(is_spaces(argv[i]))
+		if (is_spaces(argv[i]))
 			is_valid_str(argv[i]);
 }

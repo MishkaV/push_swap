@@ -6,13 +6,13 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 11:51:16 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 19:41:09 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 22:05:41 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node* rra(t_node *root)
+t_node	*rra(t_node *root)
 {
 	if (!root)
 		return (0);
@@ -21,7 +21,7 @@ t_node* rra(t_node *root)
 	return (root);
 }
 
-t_node* rrb(t_node *root)
+t_node	*rrb(t_node *root)
 {
 	if (!root)
 		return (0);

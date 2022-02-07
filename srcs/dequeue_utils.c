@@ -6,16 +6,16 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:04:34 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 22:22:34 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 22:00:50 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    print_dequeue(t_node *root)
+void	print_dequeue(t_node *root)
 {
-	t_node *begin;
-	
+	t_node	*begin;
+
 	if (!root)
 		return ;
 	begin = root;
@@ -31,16 +31,14 @@ void    print_dequeue(t_node *root)
 	ft_putstr_fd("\n--------------------------------------\n", STANDART_OUTPUT);
 }
 
-void    clean_dequeu(t_node *root)
+void	clean_dequeu(t_node *root)
 {
-	t_node *begin;
-	t_node *next;
+	t_node	*begin;
+	t_node	*next;
 
 	begin = root;
-
 	if (!root)
 		return ;
-	
 	while (root->next != begin)
 	{
 		next = root->next;
@@ -50,24 +48,24 @@ void    clean_dequeu(t_node *root)
 	free(root);
 }
 
-int is_sorted_ascending(t_node* root)
+int	is_sorted_ascending(t_node *root)
 {
-    t_node *begin;
+	t_node	*begin;
 
-    begin = root;
+	begin = root;
 	while (root->next != begin)
-    {
-        if (root->num > root->next->num)
-            return (0);
-        root = root->next;
-    }
-    return (1);
+	{
+		if (root->num > root->next->num)
+			return (0);
+		root = root->next;
+	}
+	return (1);
 }
 
-int	find_max(t_node* root)
+int	find_max(t_node	*root)
 {
 	int		max;
-	t_node*	begin;
+	t_node	*begin;
 
 	max = root->num;
 	begin = root;
@@ -82,10 +80,10 @@ int	find_max(t_node* root)
 	return (max);
 }
 
-int	find_min(t_node* root)
+int	find_min(t_node *root)
 {
 	int		min;
-	t_node*	begin;
+	t_node	*begin;
 
 	if (!root)
 		return (-1);

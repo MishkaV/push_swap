@@ -6,16 +6,16 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 22:02:50 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 22:17:30 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 22:02:06 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void copy_arr(t_node* root, int *arr)
+static	void	copy_arr(t_node *root, int *arr)
 {
-	t_node  *begin;
-	int     i;
+	t_node	*begin;
+	int		i;
 
 	begin = root;
 	i = 0;
@@ -28,12 +28,12 @@ static void copy_arr(t_node* root, int *arr)
 	arr[i] = root->num;
 }
 
-static int*  bubble_sort(int *arr, int len)
+static	int	*bubble_sort(int *arr, int len)
 {
 	int	i;
 	int	j;
 	int	buffer;
-	
+
 	i = 0;
 	while (i < len - 1)
 	{
@@ -50,12 +50,12 @@ static int*  bubble_sort(int *arr, int len)
 		}
 		i++;
 	}
-	return arr;
+	return (arr);
 }
 
-int find_med(t_node *root, int len)
+int	find_med(t_node *root, int len)
 {
-	int *arr;
+	int	*arr;
 
 	if (!root)
 		return (-1);
@@ -64,5 +64,5 @@ int find_med(t_node *root, int len)
 		print_error("Error");
 	copy_arr(root, arr);
 	arr = bubble_sort(arr, len);
-	return arr[len / 2];
+	return (arr[len / 2]);
 }

@@ -6,13 +6,13 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:03:57 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 21:19:58 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 22:10:46 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void init_instr(t_instr* instr)
+static	void	init_instr(t_instr	*instr)
 {
 	instr->len_a = -1;
 	instr->instr_a = 0;
@@ -20,10 +20,10 @@ static void init_instr(t_instr* instr)
 	instr->instr_b = 0;
 }
 
-static void	tick_nodes(t_node *root_b, int len)
+static	void	tick_nodes(t_node *root_b, int len)
 {
-	int		i;
-	
+	int	i;
+
 	i = 0;
 	while (i <= len / 2)
 	{
@@ -42,7 +42,7 @@ static void	tick_nodes(t_node *root_b, int len)
 	}
 }
 
-static void	make_instr(t_all* all, t_instr *instr)
+static	void	make_instr(t_all *all, t_instr *instr)
 {
 	while (instr->len_b)
 	{
@@ -64,9 +64,10 @@ static void	make_instr(t_all* all, t_instr *instr)
 	inc_pa(all);
 }
 
-static void	sort_extension_more(t_all* all)
+static	void	sort_extension_more(t_all *all)
 {
-	t_instr instr;
+	t_instr	instr;
+
 	all->root_a = pa(all->root_a, &all->root_b);
 	inc_pa(all);
 	while (all->len_b)
@@ -77,7 +78,8 @@ static void	sort_extension_more(t_all* all)
 		find_instr(all, &instr);
 		make_instr(all, &instr);
 	}
-	if ((all->len_a / 2 < search_by_index(all->root_a, all->param.min, all->len_a)))
+	if ((all->len_a / 2 < search_by_index(all->root_a, \
+											all->param.min, all->len_a)))
 		while (all->root_a->num != all->param.min)
 			all->root_a = rra(all->root_a);
 	else
@@ -85,13 +87,15 @@ static void	sort_extension_more(t_all* all)
 			all->root_a = ra(all->root_a);
 }
 
-void    sort_extension(t_all* all)
+void	sort_extension(t_all *all)
 {	
 	all->param.max = find_max(all->root_a);
 	all->param.min = find_min(all->root_a);
 	all->param.med = find_med(all->root_a, all->len_a);
 	while (all->len_a != 2)
-		if (all->root_a->num != all->param.min && all->root_a->num != all->param.max)
+	{	
+		if (all->root_a->num != all->param.min && \
+			all->root_a->num != all->param.max)
 		{
 			all->root_b = pb(all->root_b, &all->root_a);
 			inc_pb(all);
@@ -100,6 +104,7 @@ void    sort_extension(t_all* all)
 		}
 		else
 			all->root_a = ra(all->root_a);
+	}
 	if (all->root_a->next->num > all->root_a->num)
 		all->root_a = sa(all->root_a);
 	sort_extension_more(all);

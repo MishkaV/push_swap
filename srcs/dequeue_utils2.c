@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 22:02:50 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/07 22:02:06 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 23:08:14 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static	int	*bubble_sort(int *arr, int len)
 int	find_med(t_node *root, int len)
 {
 	int	*arr;
+	int	med;
 
 	if (!root)
 		return (-1);
@@ -64,5 +65,7 @@ int	find_med(t_node *root, int len)
 		print_error("Error");
 	copy_arr(root, arr);
 	arr = bubble_sort(arr, len);
-	return (arr[len / 2]);
+	med = arr[len / 2];
+	free(arr);
+	return (med);
 }

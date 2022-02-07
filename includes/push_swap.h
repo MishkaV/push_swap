@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 19:56:24 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 22:17:26 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 18:57:17 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,35 @@
 typedef struct      s_node
 {
 	int             num;
-	int             index;
-	int             gen;
+	int             step;
+	int             rotate;
 	struct s_node   *next;
 	struct s_node   *prev;
 }                   t_node;
+
+typedef struct	s_param
+{
+	int			min;
+	int			max;
+	int			med;
+}				t_param;
 
 typedef struct	s_all
 {
 	t_node*		root_a;
 	t_node*		root_b;
+	t_param		param;
 	int			len_a;
 	int			len_b;
 }				t_all;
+
+typedef struct		s_steps
+{
+	int				count_a;
+	int				count_b;
+	int				dest_a;
+	int				dest_b;
+}					t_steps;
 
 void    print_error(char *str);
 void	init_all(t_all* all);
@@ -47,6 +63,7 @@ int 	is_sorted_ascending(t_node* root);
 int		find_max(t_node* root);
 int		find_min(t_node* root);
 int 	find_med(t_node *root, int len);
+
 
 #include "core_operations.h"
 #include "operations.h"
@@ -60,5 +77,10 @@ void    parser(t_all* all, int argc, char** argv);
 
 void    sort_dequeu(t_all *all);
 void    sort_extension(t_all* all);
+void 	inc_pa(t_all *all);
+void 	inc_pb(t_all *all);
 
+
+void	ft_minimum_insertion_steps(t_all* all, t_steps *steps);
+int		ft_count_to_min(t_node *a, int min, int len_a);
 #endif

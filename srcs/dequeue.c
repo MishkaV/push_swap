@@ -6,7 +6,7 @@
 /*   By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 20:55:25 by jbenjy            #+#    #+#             */
-/*   Updated: 2022/02/06 18:33:07 by jbenjy           ###   ########.fr       */
+/*   Updated: 2022/02/07 18:55:39 by jbenjy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ t_node  *get_new_node(int num)
     node->next = node;
     node->prev = node;
     node->num = num;
-    node->gen = 0;
-    node->index = 0;
     return (node);
 }
 

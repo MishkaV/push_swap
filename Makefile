@@ -6,7 +6,7 @@
 #    By: jbenjy <jbenjy@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 15:57:25 by jbenjy            #+#    #+#              #
-#    Updated: 2022/02/06 22:03:08 by jbenjy           ###   ########.fr        #
+#    Updated: 2022/02/07 18:44:52 by jbenjy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS			=	srcs/main.c \
 					srcs/checks.c \
 					srcs/sort.c \
 					srcs/sort2.c \
+					srcs/sort3.c \
 					srcs/parser.c 
 					
 OBJS			=	$(SRCS:.c=.o)
